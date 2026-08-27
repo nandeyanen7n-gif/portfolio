@@ -1,0 +1,43 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OTHER WORKS | MACHINO AZUSA PORTFOLIO</title><meta name="description" content="写真、着彩、立体によるMACHINO AZUSAの作品。"><link rel="icon" type="image/png" sizes="512x512" href="favicon.png"><link rel="apple-touch-icon" href="favicon.png"><link rel="stylesheet" href="detail-v2.css"></head><body>
+<header class="site-header"><div class="inner"><a class="home-mark" href="index.html"><img src="portfolio-assets/machino-mark.svg" alt="" aria-hidden="true"><span>MACHINO AZUSA</span></a><nav class="detail-nav" id="detailNav"><a href="works.html#machino-azusa">WORKS</a><a href="other-works.html" aria-current="page">OTHER WORKS</a><a href="index.html#about">ABOUT</a></nav><button class="menu-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="detailNav">MENU</button></div></header>
+<div class="works-page-jump other-page-jump"><nav class="section-jump" aria-label="OTHER WORKS内の作品"><a href="#visual-expression" data-other-link="visual-expression" aria-current="location">VISUAL</a><span aria-hidden="true">/</span><a href="#ikeru" data-other-link="ikeru">IKERU</a><span aria-hidden="true">/</span><a href="#atsureki" data-other-link="atsureki">軋轢</a></nav></div>
+<main>
+
+
+<section class="chapter other-work-chapter" id="visual-expression"><div class="inner"><div class="chapter-head"><h2>ヴィジュアル表現</h2></div>
+<div class="gallery large-sequence"><figure><div class="square"><img src="portfolio-assets/visual-ink.webp" alt="写真を再構成した作品"></div><figcaption>コラージュ</figcaption></figure><figure><div class="square"><img src="portfolio-assets/visual-mono.webp" alt="モノクロ着彩作品"></div><figcaption>モノクロ</figcaption></figure><figure><div class="square"><img src="portfolio-assets/visual-color.webp" alt="カラー着彩作品"></div><figcaption>カラー</figcaption></figure></div><div class="work-overview overview-format"><h3 class="work-summary-title">作品概要</h3><div class="project-deck"><p>写真を切り取り、組み合わせることで一つのイメージを再構成。その後、モノクロからカラーへと着彩を展開しました。</p><div class="project-facts"><span><b>技法</b>コラージュ / アクリル絵具</span><span><b>素材</b>写真 / アクリル絵具</span><span><b>形態</b>平面作品</span><span><b>制作方法</b>切り取り / 再構成 / 着彩</span></div></div></div></div></section>
+
+<section class="chapter other-work-chapter" id="ikeru"><div class="inner"><div class="chapter-head"><h2>IKERU</h2></div>
+<div class="gallery large-sequence"><figure><div class="landscape"><img src="portfolio-assets/ikeru.webp" alt="立体作品 IKERU"></div><figcaption>IKERU / 全景</figcaption></figure><figure><div class="landscape"><img src="portfolio-assets/ikeru-details.webp" alt="立体作品IKERUの別角度と素材のディテール"></div><figcaption>IKERU / 別角度とディテール</figcaption></figure></div><div class="work-overview overview-format"><h3 class="work-summary-title">作品概要</h3><div class="project-deck"><p>異なる素材の形や質感を生かしながら組み上げた立体作品。見る角度によって変化する輪郭と、素材同士の関係を探りました。</p><div class="project-facts"><span><b>技法</b>異素材による構成</span><span><b>素材</b>石 / 金網 / 糸 / ほか</span><span><b>形態</b>立体作品</span><span><b>制作方法</b>組み合わせ / 構成</span></div></div></div></div></section>
+
+<section class="chapter other-work-chapter" id="atsureki"><div class="inner"><div class="chapter-head"><h2>軋轢</h2></div>
+<div class="gallery large-sequence"><figure><div class="landscape"><img src="portfolio-assets/atsureki-process.webp" alt="軋轢の制作過程を示す6枚の写真"></div><figcaption>軋轢 / 制作過程</figcaption></figure><figure><div class="landscape"><img src="portfolio-assets/atsureki.webp" alt="立体作品 軋轢"></div><figcaption>軋轢 / 作品全景</figcaption></figure></div><div class="work-overview overview-format"><h3 class="work-summary-title">作品概要</h3><div class="project-deck"><p>素材を重ね、縫い、形を変えながら制作した立体作品。制作の痕跡を残し、異なる要素がぶつかり合う状態を一つの形にまとめました。</p><div class="project-facts"><span><b>技法</b>縫製 / 異素材による構成</span><span><b>素材</b>布 / 糸 / 異素材</span><span><b>形態</b>立体作品</span><span><b>制作方法</b>重ねる / 縫う / 変形</span></div></div></div></div></section>
+<div class="inner detail-end-nav"><a class="back-link" href="index.html#other-works">← OTHER WORKS</a><a class="next-link" href="index.html#about"><div><small>NEXT</small><br><strong>ABOUT</strong></div><span>→</span></a></div></main><footer class="footer"><button class="page-top" type="button" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg></button><div>Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div></footer><script src="detail-lightbox.js"></script><script>const b=document.querySelector('.menu-button'),n=document.querySelector('#detailNav'),t=document.querySelector('.page-top');
+function setMenu(open){
+  n.classList.toggle('open',open);
+  b.classList.toggle('open',open);
+  b.setAttribute('aria-expanded',String(open));
+  b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+  document.body.classList.toggle('menu-open',open);
+}
+b.onclick=()=>setMenu(!n.classList.contains('open'));
+n.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){setMenu(false);b.focus();}});
+window.addEventListener('scroll',()=>t.classList.toggle('is-visible',window.scrollY>420),{passive:true});t.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const mobileHeader=document.querySelector('.site-header');let lastMobileY=window.scrollY;
+window.addEventListener('scroll',()=>{if(window.innerWidth>760||document.body.classList.contains('menu-open')){mobileHeader.classList.remove('mobile-hidden');lastMobileY=window.scrollY;return;}const y=window.scrollY;if(y<24||y<lastMobileY-6)mobileHeader.classList.remove('mobile-hidden');else if(y>lastMobileY+6&&y>90)mobileHeader.classList.add('mobile-hidden');lastMobileY=y;},{passive:true});
+const otherLinks=[...document.querySelectorAll('.other-page-jump [data-other-link]')];
+const otherSections=otherLinks.map(link=>document.getElementById(link.dataset.otherLink)).filter(Boolean);
+function updateOtherSwitcher(){
+  if(!otherLinks.length||!otherSections.length)return;
+  const pivot=window.scrollY+Math.min(window.innerHeight*.38,320);
+  let active=otherSections[0].id;
+  otherSections.forEach(section=>{if(section.offsetTop<=pivot)active=section.id;});
+  otherLinks.forEach(link=>{
+    if(link.dataset.otherLink===active)link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('scroll',updateOtherSwitcher,{passive:true});
+window.addEventListener('load',updateOtherSwitcher);
+updateOtherSwitcher();</script></body></html>

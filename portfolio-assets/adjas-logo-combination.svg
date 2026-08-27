@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231815;
+        font-family: mplus-2c-black, 'M+ 2c';
+        font-size: 116.13px;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        fill: #00873c;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(512 705.95)"><tspan x="0" y="0">ADJAS</tspan></text>
+  <path class="cls-2" d="M911.42,22.06l-399.39-.66C79.64,32.53,112.58,525.65,112.58,525.65l52.94.09c-.35-10.23-2.91-158.75,146.48-158.75s146.63,155.52,146.46,159.24l53.54.09c432.39-11.12,399.42-504.25,399.42-504.25ZM512,473.16V74.55s207.91-11.24,207.91,199.31-207.91,199.31-207.91,199.31Z"/>
+</svg>

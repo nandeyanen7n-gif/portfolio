@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MACHINO AZUSA | DESIGN / WEB / BRANDING</title>
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<nav id="gnav">
+  <div class="inner">
+    <a href="#hero" class="nav-mark">
+      <img src="portfolio-assets/machino-mark.svg" alt="" aria-hidden="true">
+      <span><span class="name-accent">M</span>ACHINO <span class="name-accent">A</span>ZUSA</span>
+    </a>
+    <ul class="nav-links mono" id="navLinks">
+      <span class="nav-indicator" id="navIndicator"></span>
+      <li><a href="works.html" data-nav>WORKS</a></li>
+      <li><a href="other-works.html" data-nav>OTHER WORKS</a></li>
+      <li><a href="#about" data-nav>ABOUT</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header id="hero">
+  <!-- ここにロゴのSVGを差し替えてください（#heroLogo 内の <svg> を丸ごと入れ替えるだけでOK） -->
+  <div class="logo-stage">
+    <div id="heroLogo">
+      <svg viewBox="0 0 337.32 198.66" xmlns="http://www.w3.org/2000/svg">
+        <path class="logo-line-under" d="M246.9,146.44c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22M319.32,104.62v41.82c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22v-41.82s0-41.82,0-41.82c0-18.9-15.32-34.22-34.22-34.22h-3.99c-18.9,0-34.22,15.32-34.22,34.22v83.64c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22,0,0,0-41.82,0-41.82v-41.82c0-18.9-15.32-34.22-34.22-34.22h-3.99c-18.9,0-34.22,15.32-34.22,34.22v117.86"/>
+        <path class="logo-line" d="M235.28,135.86c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22M307.71,94.04v41.82c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22v-41.82s0-41.82,0-41.82c0-18.9-15.32-34.22-34.22-34.22h-3.99c-18.9,0-34.22,15.32-34.22,34.22v83.64c0,18.9-15.32,34.22-34.22,34.22h-3.99c-18.9,0-34.22-15.32-34.22-34.22,0,0,0-41.82,0-41.82v-41.82c0-18.9-15.32-34.22-34.22-34.22h-3.99c-18.9,0-34.22,15.32-34.22,34.22v117.86"/>
+      </svg>
+    </div>
+  </div>
+
+  <h1 class="hero-word display"><span class="hero-title-line"><span class="name-accent">M</span>ACHINO</span><span class="hero-title-line"><span class="name-accent">A</span>ZUSA</span><span class="hero-title-line"><span class="name-accent">P</span>ORTFOLIO</span></h1>
+  <a class="hero-down" href="#works" aria-label="作品一覧へ移動">
+    <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 2v23M4 17l8 8 8-8"/></svg>
+  </a>
+</header>
+
+<main id="contents">
+
+  <section class="home-section" id="works">
+    <div class="inner">
+      <div class="home-heading"><h2><a href="works.html" aria-label="WORKS詳細ページへ移動">WORKS</a></h2><p>制作実績</p></div>
+      <div class="works-grid">
+        <article class="home-card machino-work-card">
+          <a class="home-card-image" href="works.html#machino-azusa" aria-label="WORKSページのMACHINO AZUSAへ移動"><img decoding="async" src="portfolio-assets/machino-mark.svg" alt="MACHINO AZUSAのロゴマーク"></a>
+          <h3><a href="works.html#machino-azusa">MACHINO AZUSA</a></h3><p>ロゴ / 名刺 / WEB</p>
+        </article>
+        <article class="home-card">
+          <a class="home-card-image" href="works.html#adjas" aria-label="WORKSページのADJASへ移動"><img decoding="async" src="portfolio-assets/adjas-home.png" alt="ADJASのロゴ"></a>
+          <h3><a href="works.html#adjas">ADJAS</a></h3><p>ロゴ / 名刺 / WEB</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section" id="other-works">
+    <div class="inner">
+      <div class="home-heading"><h2><a href="other-works.html" aria-label="OTHER WORKS詳細ページへ移動">OTHER WORKS</a></h2><p>過去作品</p></div>
+      <div class="other-grid">
+        <article class="other-card"><a class="home-card-image" href="other-works.html#visual-expression" aria-label="ヴィジュアル表現の詳細を見る"><img decoding="async" src="portfolio-assets/visual-color.webp" alt="カラー着彩によるヴィジュアル作品"></a><h3><a href="other-works.html#visual-expression">ヴィジュアル表現</a></h3></article>
+        <article class="other-card"><a class="home-card-image" href="other-works.html#ikeru" aria-label="IKERUの詳細を見る"><img decoding="async" src="portfolio-assets/ikeru.webp" alt="立体作品 IKERU"></a><h3><a href="other-works.html#ikeru">IKERU</a></h3></article>
+        <article class="other-card"><a class="home-card-image" href="other-works.html#atsureki" aria-label="軋轢の詳細を見る"><img loading="eager" decoding="async" src="portfolio-assets/atsureki.webp" alt="立体作品 軋轢"></a><h3><a href="other-works.html#atsureki">軋轢</a></h3></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section" id="about">
+    <div class="inner">
+      <div class="home-heading"><h2>ABOUT</h2><p>私について</p></div>
+      <div class="about-home">
+        <div class="about-home-art"><img class="about-illustration" decoding="async" src="portfolio-assets/about_illustration.jpg" alt="MACHINO AZUSAによる人物の線画作品"></div>
+        <div class="about-home-copy">
+          <h3 class="about-name-en">MACHINO AZUSA</h3>
+          <p class="about-name-ja">町野 あずさ</p>
+          <p class="about-intro about-statement">見えないものを、ハッケンしたい。<br>カタチにしたい。誰かにツタエたい。</p>
+          <dl class="about-data">
+            <div><dt>好きなこと</dt><dd>グラフィックデザイン / イラスト / 写真</dd></div>
+            <div><dt>制作ツール</dt><dd>Illustrator / Photoshop / 紙とペン</dd></div>
+            <div class="contact-row"><dt class="visually-hidden">連絡先</dt><dd><a class="contact-mail" href="mailto:your-email@example.com"><span>your-email@example.com</span><span class="mail-icon" aria-hidden="true"></span></a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer">
+  <button class="page-top" id="pageTop" aria-label="ページ上部へ戻る">
+    <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg>
+  </button>
+  <div class="copyright">Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div>
+</footer>
+
+<script src="home.js"></script>
+</body>
+</html>
