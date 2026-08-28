@@ -1754,3 +1754,9 @@
     pointer-events:none!important;
   }
 }
+/* mobile header line removal */
+@media (max-width:760px){
+  #gnav{
+    border-bottom:none !important;
+  }
+}
