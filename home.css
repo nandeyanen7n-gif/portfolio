@@ -1698,3 +1698,41 @@
     display:none!important;
   }
 }
+
+/* v5.5 mobile first-view canvas fix
+   Keep the entire first viewport pure white edge-to-edge.
+   Section colours start from WORKS, not from the page canvas. */
+@media (max-width:760px){
+  html,
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    background:#FFFFFF!important;
+    overflow-x:hidden!important;
+  }
+
+  #gnav,
+  #hero{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    background:#FFFFFF!important;
+  }
+
+  #contents{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+  }
+
+  /* The colour change begins only at the WORKS section. */
+  #works,
+  #about{
+    background:#FAF9F7!important;
+  }
+  #other-works{
+    background:#FFFFFF!important;
+  }
+}
