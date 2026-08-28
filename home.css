@@ -1621,3 +1621,18 @@
 #hero.is-ready .hero-word .name-accent:first-child{
   transition-delay:0s;
 }
+
+/* v5.3 mobile typography + motion refinement */
+@media (max-width:760px){
+  #hero .hero-word{
+    font-size:clamp(20px,5.4vw,23px)!important;
+    line-height:1.34!important;
+    letter-spacing:.075em!important;
+  }
+  #hero .hero-word .name-accent,
+  #hero.is-ready .hero-word .name-accent{
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
