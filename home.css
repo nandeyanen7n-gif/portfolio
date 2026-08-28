@@ -1742,7 +1742,7 @@
 @media (max-width:760px){
   #hero .hero-word,
   #hero.is-ready .hero-word{
-    letter-spacing:.13em!important;
+    letter-spacing:.20em!important;
   }
 }
 
