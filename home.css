@@ -1736,3 +1736,21 @@
     background:#FFFFFF!important;
   }
 }
+
+/* v5.6 mobile hero title tracking refinement
+   Open up MACHINO / AZUSA / PORTFOLIO without changing the rest of the layout. */
+@media (max-width:760px){
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    letter-spacing:.13em!important;
+  }
+}
+
+/* v5.7 mobile header simplification
+   The large hero mark is the only logo on the first screen; keep only the menu button in the mobile header. */
+@media (max-width:760px){
+  #gnav .nav-mark{
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
