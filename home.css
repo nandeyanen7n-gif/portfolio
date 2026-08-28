@@ -1463,33 +1463,161 @@
 }
 
 
-/* v5 — definitive mobile viewport fix */
+/* v5 mobile viewport fix — device-safe revision
+   Use percentage widths instead of 100vw so mobile browser UI / scrollbar
+   calculations cannot make the page wider than the visible viewport. */
 @media (max-width:760px){
-  html{
+  html,
+  body{
     width:100%;
+    max-width:100%;
+    margin:0;
     overflow-x:hidden;
   }
   body{
-    width:100%;
-    min-width:100%;
-    overflow-x:hidden;
+    min-width:0;
   }
   #gnav,
   #hero,
   #contents,
   .home-section{
     box-sizing:border-box;
-    width:100vw!important;
-    max-width:100vw!important;
+    width:100%!important;
+    max-width:100%!important;
     margin-left:0!important;
     margin-right:0!important;
   }
   #gnav,
   #hero{
     left:0!important;
-    right:auto!important;
+    right:0!important;
+  }
+  .nav-links{
+    width:auto;
+    max-width:none;
   }
   #hero{
     background:#fff!important;
   }
+}
+
+/* v5.1 mobile content readability refinement
+   Scope: WORKS and below only. Hero/header remain unchanged. */
+@media (max-width:760px){
+  #contents .home-section .inner{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  #contents .home-section{
+    padding-top:72px;
+    padding-bottom:72px;
+  }
+  #contents .home-section + .home-section{
+    padding-top:72px;
+  }
+  #contents .home-heading{
+    margin-bottom:40px;
+  }
+  #contents .home-heading h2{
+    font-size:28px;
+    line-height:1.3;
+    letter-spacing:.12em;
+  }
+  #contents .home-heading p{
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  #works .works-grid{gap:54px;}
+  #works .home-card-image{
+    width:100%;
+    aspect-ratio:4/3;
+  }
+  #works .machino-work-card .home-card-image img{
+    width:82%;
+    height:82%;
+  }
+  #works .home-card h3{
+    margin-top:20px;
+    margin-bottom:8px;
+    font-size:20px;
+    line-height:1.45;
+  }
+  #works .home-card p{
+    font-size:12px;
+    line-height:1.7;
+  }
+
+  #other-works .other-grid{gap:42px;}
+  #other-works .other-card h3{
+    margin-top:14px;
+    font-size:17px;
+    line-height:1.55;
+  }
+
+  #about .about-home{gap:42px;}
+  #about .about-home-art{
+    max-width:none;
+    width:100%;
+  }
+  #about .about-name-en{
+    font-size:22px;
+    line-height:1.5;
+  }
+  #about .about-name-ja{
+    font-size:16px;
+    margin-bottom:30px;
+  }
+  #about .about-intro{
+    font-size:16px;
+    line-height:2;
+    margin-bottom:38px;
+  }
+  #about .about-data div{padding:22px 0;}
+  #about .about-data dt{font-size:15px;}
+  #about .about-data dd{font-size:15px;line-height:1.85;}
+  #about .contact-mail{font-size:15px;}
+}
+
+/* v5.2 mobile first-view refinement
+   Keep the first screen to logo + name + arrow, and fix M/A/P accent timing. */
+@media (max-width:760px){
+  #hero{
+    min-height:100svh!important;
+    height:100svh;
+    box-sizing:border-box;
+    padding:calc(var(--header-h) + 24px) 24px 72px!important;
+    justify-content:center!important;
+  }
+
+  #hero .logo-stage,
+  #hero.is-ready .logo-stage{
+    width:min(76vw,340px)!important;
+    max-width:340px!important;
+    margin:0 auto 34px!important;
+    transform:none!important;
+  }
+
+  #hero .hero-word{
+    margin:0!important;
+    font-size:clamp(14px,3.8vw,17px)!important;
+    line-height:1.38!important;
+    letter-spacing:.09em!important;
+  }
+
+  #hero .hero-down{
+    bottom:18px!important;
+  }
+
+  /* Each accent is the first child of its own line, so nth-child on
+     .name-accent made all three share the same delay. Target the line instead. */
+  #hero .hero-title-line:nth-child(1) .name-accent{transition-delay:.08s!important;}
+  #hero .hero-title-line:nth-child(2) .name-accent{transition-delay:.18s!important;}
+  #hero .hero-title-line:nth-child(3) .name-accent{transition-delay:.28s!important;}
+}
+
+/* Neutralize the old selector that accidentally matches M, A and P alike. */
+#hero.is-ready .hero-word .name-accent:first-child{
+  transition-delay:0s;
 }
