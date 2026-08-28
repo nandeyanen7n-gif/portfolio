@@ -1636,3 +1636,65 @@
     transform:none!important;
   }
 }
+
+/* v5.4 mobile hero final refinement
+   Mobile only: static logo, larger title, calmer spacing, no down arrow. */
+@media (max-width:760px){
+  #hero{
+    min-height:100svh!important;
+    height:100svh!important;
+    padding:calc(var(--header-h) + 18px) 24px 42px!important;
+    justify-content:center!important;
+  }
+
+  #hero .logo-stage,
+  #hero.is-ready .logo-stage{
+    width:min(76vw,340px)!important;
+    max-width:340px!important;
+    margin:0 auto 46px!important;
+    transform:none!important;
+    transition:none!important;
+  }
+
+  /* Keep the logo completely static on phones. */
+  #heroLogo .logo-line{
+    stroke-dasharray:none!important;
+    stroke-dashoffset:0!important;
+    transition:none!important;
+  }
+  #heroLogo .logo-line-under{
+    display:none!important;
+    opacity:0!important;
+    transition:none!important;
+  }
+
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    margin:0!important;
+    font-size:clamp(25px,6.5vw,28px)!important;
+    line-height:1.08!important;
+    letter-spacing:.055em!important;
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+
+  #hero .hero-title-line{
+    display:block!important;
+  }
+  #hero .hero-title-line + .hero-title-line{
+    margin-top:9px!important;
+  }
+
+  #hero .hero-word .name-accent,
+  #hero.is-ready .hero-word .name-accent{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+
+  /* The first view is strong enough without a scroll cue on mobile. */
+  #hero .hero-down{
+    display:none!important;
+  }
+}
