@@ -12,32 +12,65 @@
 
 <section class="chapter other-work-chapter" id="atsureki"><div class="inner"><div class="chapter-head"><h2>軋轢</h2></div>
 <div class="gallery large-sequence"><figure><div class="landscape"><img src="portfolio-assets/atsureki-process.webp" alt="軋轢の制作過程を示す6枚の写真"></div><figcaption>軋轢 / 制作過程</figcaption></figure><figure><div class="landscape"><img src="portfolio-assets/atsureki.webp" alt="立体作品 軋轢"></div><figcaption>軋轢 / 作品全景</figcaption></figure></div><div class="work-overview overview-format"><h3 class="work-summary-title">作品概要</h3><div class="project-deck"><p>素材を重ね、縫い、形を変えながら制作した立体作品。制作の痕跡を残し、異なる要素がぶつかり合う状態を一つの形にまとめました。</p><div class="project-facts"><span><b>技法</b>縫製 / 異素材による構成</span><span><b>素材</b>布 / 糸 / 異素材</span><span><b>形態</b>立体作品</span><span><b>制作方法</b>重ねる / 縫う / 変形</span></div></div></div></div></section>
-<div class="inner detail-end-nav"><a class="back-link" href="index.html#other-works">← OTHER WORKS</a><a class="next-link" href="index.html#about"><div><small>NEXT</small><br><strong>ABOUT</strong></div><span>→</span></a></div></main><footer class="footer"><button class="page-top" type="button" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg></button><div>Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div></footer><script src="detail-lightbox.js"></script><script>const b=document.querySelector('.menu-button'),n=document.querySelector('#detailNav'),t=document.querySelector('.page-top');
-function setMenu(open){
-  n.classList.toggle('open',open);
-  b.classList.toggle('open',open);
-  b.setAttribute('aria-expanded',String(open));
-  b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
-  document.body.classList.toggle('menu-open',open);
-}
-b.onclick=()=>setMenu(!n.classList.contains('open'));
-n.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){setMenu(false);b.focus();}});
-window.addEventListener('scroll',()=>t.classList.toggle('is-visible',window.scrollY>420),{passive:true});t.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-const mobileHeader=document.querySelector('.site-header');let lastMobileY=window.scrollY;
-window.addEventListener('scroll',()=>{if(window.innerWidth>760||document.body.classList.contains('menu-open')){mobileHeader.classList.remove('mobile-hidden');lastMobileY=window.scrollY;return;}const y=window.scrollY;if(y<24||y<lastMobileY-6)mobileHeader.classList.remove('mobile-hidden');else if(y>lastMobileY+6&&y>90)mobileHeader.classList.add('mobile-hidden');lastMobileY=y;},{passive:true});
-const otherLinks=[...document.querySelectorAll('.other-page-jump [data-other-link]')];
-const otherSections=otherLinks.map(link=>document.getElementById(link.dataset.otherLink)).filter(Boolean);
-function updateOtherSwitcher(){
-  if(!otherLinks.length||!otherSections.length)return;
-  const pivot=window.scrollY+Math.min(window.innerHeight*.38,320);
-  let active=otherSections[0].id;
-  otherSections.forEach(section=>{if(section.offsetTop<=pivot)active=section.id;});
-  otherLinks.forEach(link=>{
-    if(link.dataset.otherLink===active)link.setAttribute('aria-current','location');
-    else link.removeAttribute('aria-current');
-  });
-}
-window.addEventListener('scroll',updateOtherSwitcher,{passive:true});
-window.addEventListener('load',updateOtherSwitcher);
-updateOtherSwitcher();</script></body></html>
+<div class="inner detail-end-nav"><a class="back-link" href="index.html#other-works">← OTHER WORKS</a><a class="next-link" href="index.html#about"><div><small>NEXT</small><br><strong>ABOUT</strong></div><span>→</span></a></div></main><footer class="footer"><button class="page-top" type="button" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg></button><div>Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div></footer><script src="detail-lightbox.js"></script><script>
+(()=>{
+  const b=document.querySelector('.menu-button');
+  const n=document.querySelector('#detailNav');
+  const t=document.querySelector('.page-top');
+  const header=document.querySelector('.site-header');
+
+  function setMenu(open){
+    if(!b||!n)return;
+    n.classList.toggle('open',open);
+    b.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',String(open));
+    b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    document.body.classList.toggle('menu-open',open);
+    if(open&&header)header.classList.remove('mobile-hidden');
+  }
+  if(b&&n){
+    b.addEventListener('click',()=>setMenu(!n.classList.contains('open')));
+    n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n?.classList.contains('open')){setMenu(false);b.focus();}});
+
+  function updateTop(){if(t)t.classList.toggle('is-visible',window.scrollY>320);}
+  updateTop();
+  window.addEventListener('scroll',updateTop,{passive:true});
+  if(t)t.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  let lastY=window.scrollY;
+  function updateHeader(){
+    if(!header)return;
+    if(window.innerWidth>760||document.body.classList.contains('menu-open')){header.classList.remove('mobile-hidden');lastY=window.scrollY;return;}
+    const y=window.scrollY;
+    if(y<24||y<lastY-6)header.classList.remove('mobile-hidden');
+    else if(y>lastY+6&&y>90)header.classList.add('mobile-hidden');
+    lastY=y;
+  }
+  window.addEventListener('scroll',updateHeader,{passive:true});
+
+  const links=[...document.querySelectorAll('.section-jump a[href^="#"]')];
+  const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function updateSwitcher(){
+    if(!links.length||!sections.length)return;
+    const pivot=window.scrollY+90;
+    let current=sections[0];
+    sections.forEach(s=>{if(s.offsetTop<=pivot)current=s;});
+    links.forEach(a=>{
+      const active=a.getAttribute('href')==='#'+current.id;
+      if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+    });
+  }
+  updateSwitcher();
+  window.addEventListener('scroll',updateSwitcher,{passive:true});
+
+  links.forEach(a=>a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(!target)return;
+    e.preventDefault();
+    const top=target.getBoundingClientRect().top+window.scrollY-58;
+    window.scrollTo({top,behavior:'smooth'});
+  }));
+})();
+</script></body></html>

@@ -1,6 +1,9 @@
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* mobile stability: gnav is needed by the hero branch */
+  var gnav = document.getElementById('gnav');
+
   /* ---------- hero logo: desktop existing / mobile yellow only ---------- */
   (function(){
     var hero = document.getElementById('hero');
@@ -72,8 +75,8 @@
   })();
 
   /* ---------- header: scrolled state ---------- */
-  var gnav = document.getElementById('gnav');
   function onScrollHeader(){
+    if(!gnav) return;
     gnav.classList.toggle('scrolled', window.scrollY > 12);
     document.body.classList.toggle('has-scrolled', window.scrollY > 10);
   }
@@ -150,7 +153,7 @@
   var sections = navItems.map(function(a){ return document.querySelector(a.getAttribute('href')); });
 
   function moveIndicator(link){
-    if(!link || window.innerWidth <= 680) return;
+    if(!link || !indicator || window.innerWidth <= 680) return;
     indicator.style.width = link.offsetWidth + 'px';
     indicator.style.transform = 'translateX(' + link.offsetLeft + 'px)';
   }
@@ -173,7 +176,7 @@
   window.addEventListener('resize', function(){
     var current = document.querySelector('[data-nav].active');
     moveIndicator(current);
-    if(window.innerWidth > 760 && navLinks.classList.contains('open')){
+    if(window.innerWidth > 760 && navLinks && burger && navLinks.classList.contains('open')){
       navLinks.classList.remove('open');
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded','false');

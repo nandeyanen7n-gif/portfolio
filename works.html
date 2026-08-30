@@ -16,40 +16,65 @@
 <section class="chapter"><div class="inner"><div class="chapter-head"><h2>ロゴの仕様</h2><p class="chapter-copy">完成したロゴを、マーク、ロゴタイプ、モノクロ、ブランドカラーへ展開しました。</p></div><div class="logo-variations adjas-variations"><figure class="logo-variation"><figcaption>ロゴマーク</figcaption><div class="variation-board"><img src="portfolio-assets/adjas-logo.svg" alt="ADJASのロゴマーク"></div></figure><figure class="logo-variation"><figcaption>ロゴタイプ</figcaption><div class="variation-board"><img src="portfolio-assets/adjas-logo-type.svg" alt="ADJASのロゴタイプ"></div></figure><div class="logo-variation mono"><p>モノクロ表示</p><div class="mono-boards"><div class="mono-board adjas-mono light"></div><div class="mono-board adjas-mono dark"></div></div></div><div class="logo-variation colors"><p>カラー</p><dl><div><dt>GREEN</dt><dd>#008C44</dd><i style="background:#008C44"></i></div><div><dt>BLACK</dt><dd>#111111</dd><i style="background:#111111"></i></div><div><dt>WHITE</dt><dd>#FFFFFF</dd><i style="background:#fff"></i></div></dl></div></div></div></section>
 <section class="chapter"><div class="inner"><div class="chapter-head"><h2>ロゴの展開</h2><p class="chapter-copy">緑と白を中心に清潔感と信頼感をつくり、ロゴから名刺、コーポレートサイトまで一貫した印象で展開しました。</p></div><div class="gallery application-adjas"><figure><div class="landscape"><img src="portfolio-assets/adjas-business-card.jpg" alt="ADJASの名刺"></div><figcaption>名刺</figcaption></figure><figure class="website-long"><div><img src="portfolio-assets/adjas_website.jpg" alt="ADJASのコーポレートWebサイト全体"></div><figcaption>CORPORATE WEBSITE</figcaption></figure></div></div></section>
 <div class="inner detail-end-nav"><a class="back-link" href="index.html#works">← WORKS</a><a class="next-link" href="other-works.html"><div><small>NEXT</small><br><strong>OTHER WORKS</strong></div><span>→</span></a></div>
-</main><footer class="footer"><button class="page-top" type="button" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg></button><div>Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div></footer><script src="detail-lightbox.js"></script><script>const b=document.querySelector('.menu-button'),n=document.querySelector('#detailNav'),t=document.querySelector('.page-top');
-function setMenu(open){
-  n.classList.toggle('open',open);
-  b.classList.toggle('open',open);
-  b.setAttribute('aria-expanded',String(open));
-  b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
-  document.body.classList.toggle('menu-open',open);
-}
-b.onclick=()=>setMenu(!n.classList.contains('open'));
-n.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){setMenu(false);b.focus();}});
-window.addEventListener('scroll',()=>t.classList.toggle('is-visible',window.scrollY>420),{passive:true});t.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-const mobileHeader=document.querySelector('.site-header');let lastMobileY=window.scrollY;
-window.addEventListener('scroll',()=>{if(window.innerWidth>760||document.body.classList.contains('menu-open')){mobileHeader.classList.remove('mobile-hidden');lastMobileY=window.scrollY;return;}const y=window.scrollY;if(y<24||y<lastMobileY-6)mobileHeader.classList.remove('mobile-hidden');else if(y>lastMobileY+6&&y>90)mobileHeader.classList.add('mobile-hidden');lastMobileY=y;},{passive:true});function alignWork(){if(!location.hash)return;const target=document.querySelector(location.hash);if(!target)return;requestAnimationFrame(()=>{const root=document.documentElement,previous=root.style.scrollBehavior,offset=window.innerWidth<=760?88:108;root.style.scrollBehavior='auto';window.scrollTo(0,target.getBoundingClientRect().top+window.scrollY-offset);requestAnimationFrame(()=>{root.style.scrollBehavior=previous;});});}window.addEventListener('load',alignWork);window.addEventListener('hashchange',alignWork);
-if(document.readyState==='complete')alignWork();
+</main><footer class="footer"><button class="page-top" type="button" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12 26V3M4 11l8-8 8 8"/></svg></button><div>Copyright&copy; MACHINO AZUSA. All Rights Reserved.</div></footer><script src="detail-lightbox.js"></script><script>
+(()=>{
+  const b=document.querySelector('.menu-button');
+  const n=document.querySelector('#detailNav');
+  const t=document.querySelector('.page-top');
+  const header=document.querySelector('.site-header');
 
-const workLinks=[...document.querySelectorAll('.works-page-jump [data-work-link]')];
-const machinoSection=document.querySelector('#machino-azusa');
-const adjasSection=document.querySelector('#adjas');
+  function setMenu(open){
+    if(!b||!n)return;
+    n.classList.toggle('open',open);
+    b.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',String(open));
+    b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+    document.body.classList.toggle('menu-open',open);
+    if(open&&header)header.classList.remove('mobile-hidden');
+  }
+  if(b&&n){
+    b.addEventListener('click',()=>setMenu(!n.classList.contains('open')));
+    n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n?.classList.contains('open')){setMenu(false);b.focus();}});
 
-function updateWorkSwitcher(){
-  if(!workLinks.length||!machinoSection||!adjasSection)return;
-  const pivot=window.scrollY+Math.min(window.innerHeight*.38,320);
-  const activeId=adjasSection.offsetTop<=pivot?'adjas':'machino-azusa';
-  workLinks.forEach(link=>{
-    if(link.dataset.workLink===activeId){
-      link.setAttribute('aria-current','location');
-    }else{
-      link.removeAttribute('aria-current');
-    }
-  });
-}
-window.addEventListener('scroll',updateWorkSwitcher,{passive:true});
-window.addEventListener('resize',updateWorkSwitcher);
-window.addEventListener('load',updateWorkSwitcher);
-updateWorkSwitcher();
+  function updateTop(){if(t)t.classList.toggle('is-visible',window.scrollY>320);}
+  updateTop();
+  window.addEventListener('scroll',updateTop,{passive:true});
+  if(t)t.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  let lastY=window.scrollY;
+  function updateHeader(){
+    if(!header)return;
+    if(window.innerWidth>760||document.body.classList.contains('menu-open')){header.classList.remove('mobile-hidden');lastY=window.scrollY;return;}
+    const y=window.scrollY;
+    if(y<24||y<lastY-6)header.classList.remove('mobile-hidden');
+    else if(y>lastY+6&&y>90)header.classList.add('mobile-hidden');
+    lastY=y;
+  }
+  window.addEventListener('scroll',updateHeader,{passive:true});
+
+  const links=[...document.querySelectorAll('.section-jump a[href^="#"]')];
+  const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function updateSwitcher(){
+    if(!links.length||!sections.length)return;
+    const pivot=window.scrollY+90;
+    let current=sections[0];
+    sections.forEach(s=>{if(s.offsetTop<=pivot)current=s;});
+    links.forEach(a=>{
+      const active=a.getAttribute('href')==='#'+current.id;
+      if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+    });
+  }
+  updateSwitcher();
+  window.addEventListener('scroll',updateSwitcher,{passive:true});
+
+  links.forEach(a=>a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(!target)return;
+    e.preventDefault();
+    const top=target.getBoundingClientRect().top+window.scrollY-58;
+    window.scrollTo({top,behavior:'smooth'});
+  }));
+})();
 </script></body></html>
