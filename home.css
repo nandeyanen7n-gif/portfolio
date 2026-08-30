@@ -1663,9 +1663,7 @@
     transition:none!important;
   }
   #heroLogo .logo-line-under{
-    display:none!important;
-    opacity:0!important;
-    transition:none!important;
+    display:inline!important;
   }
 
   #hero .hero-word,
@@ -1768,5 +1766,54 @@
     stroke-dashoffset:0 !important;
     opacity:1 !important;
     transition:none !important;
+  }
+}
+
+
+/* v5.8 mobile hero alignment + spacing + horizontal lock */
+@media (max-width:760px){
+  html,
+  body{
+    width:100%!important;
+    max-width:100vw!important;
+    overflow-x:clip!important;
+    overscroll-behavior-x:none;
+  }
+
+  #gnav,
+  #hero,
+  #contents{
+    max-width:100vw!important;
+    overflow-x:clip!important;
+  }
+
+  #hero .logo-stage,
+  #hero.is-ready .logo-stage{
+    margin-bottom:58px!important;
+  }
+
+  /* Keep each line left-aligned, but center the whole text block. */
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    display:inline-block!important;
+    width:max-content!important;
+    max-width:100%!important;
+    align-self:center!important;
+    text-align:left!important;
+    line-height:1.12!important;
+  }
+
+  #hero .hero-title-line{
+    display:block!important;
+    width:max-content!important;
+  }
+
+  #hero .hero-title-line + .hero-title-line{
+    margin-top:11px!important;
+  }
+
+  /* Yellow guide is available for the mobile-only JS animation. */
+  #heroLogo .logo-line-under{
+    display:inline!important;
   }
 }
