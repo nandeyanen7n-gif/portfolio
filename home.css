@@ -2268,3 +2268,37 @@
     overflow-x:hidden!important;
   }
 }
+
+
+/* ==========================================================================
+   FINAL MOBILE CONSISTENCY — based on uploaded latest repository
+   HOME hamburger = same two-line style as WORKS / OTHER WORKS
+   ========================================================================== */
+@media (max-width:760px){
+  #gnav .nav-burger{
+    width:42px!important;
+    height:42px!important;
+  }
+  #gnav .nav-burger span{
+    left:12px!important;
+    right:12px!important;
+    width:auto!important;
+    height:1px!important;
+    background:var(--ink)!important;
+  }
+  #gnav .nav-burger span:nth-child(1){
+    top:15px!important;
+  }
+  #gnav .nav-burger span:nth-child(2){
+    display:none!important;
+  }
+  #gnav .nav-burger span:nth-child(3){
+    top:25px!important;
+  }
+  #gnav .nav-burger.open span:nth-child(1){
+    transform:translateY(5px) rotate(45deg)!important;
+  }
+  #gnav .nav-burger.open span:nth-child(3){
+    transform:translateY(-5px) rotate(-45deg)!important;
+  }
+}
