@@ -2024,42 +2024,76 @@
 
 
 /* ==========================================================================
-   MOBILE FINISH — final smartphone-only refinements
+   MOBILE FINISH v2 — safe full-width layout (no horizontal overflow)
    ========================================================================== */
 @media (max-width:760px){
 
-  /* Artwork-first: image areas run edge-to-edge, text keeps its own spacing. */
-  #works .home-card-image,
-  #other-works .other-card .home-card-image{
-    width:100vw!important;
-    max-width:100vw!important;
-    margin-left:calc(50% - 50vw)!important;
-    margin-right:calc(50% - 50vw)!important;
+  /* WORKS / OTHER WORKS image areas can touch the screen edges safely.
+     No 100vw and no negative viewport math = no sideways page shift. */
+  #works .inner,
+  #other-works .inner{
+    padding-left:0!important;
+    padding-right:0!important;
   }
 
-  /* Keep the MACHINO mark comfortably inside the full-width white board. */
+  #works .works-grid,
+  #other-works .other-grid,
+  #works .home-card,
+  #other-works .other-card,
+  #works .home-card-image,
+  #other-works .home-card-image{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* Keep headings and captions comfortably inset even though images are full width. */
+  #works .home-heading,
+  #other-works .home-heading,
+  #works .home-card h3,
+  #works .home-card p,
+  #other-works .other-card h3{
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+
+  /* Preserve the approved MACHINO mark scale. */
   #works .machino-work-card .home-card-image img{
     width:62%!important;
     height:62%!important;
     max-width:62%!important;
   }
 
-  /* Slightly quieter back-to-top control. */
-  .page-top{
-    width:50px!important;
-    height:50px!important;
-    right:14px!important;
-    bottom:18px!important;
-  }
-
-  /* Header leaves the artwork area while scrolling down. */
+  /* Hide only the HOME header while scrolling down. */
   #gnav.mobile-hidden{
     transform:translateY(-105%)!important;
     opacity:0!important;
     pointer-events:none!important;
   }
 
+  body.nav-open #gnav{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
   #gnav{
     transition:transform .35s ease, opacity .35s ease!important;
+  }
+
+  /* Keep the return-to-top control visible and secondary. */
+  .page-top{
+    width:50px!important;
+    height:50px!important;
+    right:14px!important;
+    bottom:18px!important;
+    z-index:260!important;
+  }
+
+  /* Hard stop against accidental horizontal panning. */
+  html,body,#contents{
+    overflow-x:hidden!important;
   }
 }
