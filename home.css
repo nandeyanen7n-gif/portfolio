@@ -651,7 +651,7 @@
   .hero-word{
     font-size:clamp(15px,1.7vw,22px)!important;
     font-weight:500!important;
-    letter-spacing:.24em!important;
+    letter-spacing:.30em!important;
     color:var(--ink);
     white-space:nowrap;
   }
