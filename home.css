@@ -2099,6 +2099,15 @@
 }
 
 
+
+/* TOP HERO — desktop name tracking */
+@media (min-width:761px){
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    letter-spacing:.24em!important;
+  }
+}
+
 /* ==========================================================================\n   MOBILE COMPLETE FIX — stable home only\n   ========================================================================== */
 @media (max-width:760px){
   #hero .hero-word,#hero.is-ready .hero-word,

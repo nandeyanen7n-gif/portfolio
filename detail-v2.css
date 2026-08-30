@@ -130,16 +130,20 @@ body.lightbox-open{overflow:hidden}
 /* OTHER WORKS: keep the heading visually attached to its summary content. */
 .work-overview{margin-top:clamp(70px,7vw,96px)}
 .work-summary-title{
-  margin:0 0 18px;
-  padding-bottom:16px;
-  border-bottom:1px solid var(--line);
-  font-size:clamp(20px,2vw,26px);
-  font-weight:600;
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:clamp(24px,2.5vw,32px);
+  font-weight:400;
   line-height:1.4;
-  letter-spacing:.06em;
-  text-align:left;
+  letter-spacing:.09em;
+  text-align:center;
 }
-.work-overview .project-deck{margin-top:0;padding-top:0;border-top:0}
+.work-overview .project-deck{
+  margin-top:32px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
 
 /* ==========================================================================
    MOBILE — AUTHORITATIVE DETAIL PAGE RULES
@@ -479,10 +483,6 @@ body.lightbox-open{overflow:hidden}
     margin-top:64px;
   }
 
-  .work-summary-title{
-    margin-bottom:18px;
-    padding-bottom:16px;
-  }
 
   .work-overview .project-deck>p,
   .logo-variation.colors dl,
