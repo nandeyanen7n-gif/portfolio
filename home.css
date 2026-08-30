@@ -1964,17 +1964,94 @@
 }
 
 
-/* v6.6 mobile only: enlarge the visible ADJAS mark to match MACHINO AZUSA */
+/* v6.6 SMARTPHONE ONLY
+   1) mobile menu visibility
+   2) WORKS logo visual balance
+   3) remove gray gap below OTHER WORKS images
+   4) slightly wider project-title tracking
+*/
 @media (max-width:760px){
-  #works .works-grid .home-card:not(.machino-work-card) .home-card-image{
+
+  /* --- mobile hamburger menu --- */
+  body.nav-open #gnav{
+    overflow:visible!important;
+    transform:none!important;
+  }
+
+  #gnav .nav-links{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    max-width:none!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    z-index:220!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    background:#fff!important;
+  }
+
+  #gnav .nav-links.open{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  #gnav .nav-burger{
+    position:relative!important;
+    z-index:230!important;
+  }
+
+  /* --- WORKS: keep both logos comfortably inside equal boxes --- */
+  #works .home-card-image{
+    display:grid!important;
+    place-items:center!important;
+    width:100%!important;
+    aspect-ratio:4/3!important;
     overflow:hidden!important;
   }
 
-  #works .works-grid .home-card:not(.machino-work-card) .home-card-image img{
-    width:100%!important;
-    height:100%!important;
+  /* MACHINO AZUSA has little built-in image margin, so add visual breathing room */
+  #works .machino-work-card .home-card-image img{
+    width:78%!important;
+    height:78%!important;
+    max-width:78%!important;
     object-fit:contain!important;
-    transform:scale(1.55)!important;
-    transform-origin:center center!important;
+    margin:auto!important;
+  }
+
+  /* Project names: a little more relaxed */
+  #works .home-card h3{
+    letter-spacing:.15em!important;
+  }
+
+  /* --- OTHER WORKS: image height follows the actual image, no leftover gray box --- */
+  #other-works .other-card .home-card-image{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    min-height:0!important;
+    background:transparent!important;
+    overflow:hidden!important;
+  }
+
+  #other-works .other-card .home-card-image::before{
+    display:none!important;
+  }
+
+  #other-works .other-card .home-card-image img{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    margin:0!important;
   }
 }
