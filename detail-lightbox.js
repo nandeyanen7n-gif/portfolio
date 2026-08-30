@@ -30,14 +30,11 @@
   };
 
   if (isWorksPage) {
+    // WORKS: only explicitly marked business-card and website images are zoomable.
     main.querySelectorAll('[data-lightbox]').forEach(addTarget);
   } else {
-    main.querySelectorAll('img, .variation-board, .mono-board, .logo-board').forEach((element) => {
-      if (element.matches('img') && element.closest('.variation-board, .mono-board, .logo-board')) return;
-      if (element.closest('.hero-logo, .process-chapter, .logo-variations')) return;
-      if (element.closest('#atsureki') && element.closest('figure')?.querySelector('img[src*="atsureki-process"]')) return;
-      addTarget(element);
-    });
+    // OTHER WORKS: every artwork/process image is zoomable.
+    main.querySelectorAll('img').forEach(addTarget);
   }
 
   const open = (target) => {
