@@ -112,7 +112,7 @@ body.lightbox-open{overflow:hidden}
 @media(max-width:760px){.image-lightbox{padding:62px 14px 18px}.image-lightbox-media>img{max-width:100%;max-height:82vh}.image-lightbox-media>.variation-board,.image-lightbox-media>.mono-board,.image-lightbox-media>.logo-board{width:100%;height:min(64vh,520px);padding:28px}.image-lightbox-close{top:8px;right:8px}}
 
 /* Keep title visuals secondary to the work shown in each chapter. */
-.hero-image.compact{width:min(760px,calc(100% - 80px));aspect-ratio:4/3}
+.hero-image.compact{width:min(760px,calc(100% - 80px));aspect-ratio:4/3;display:grid;place-items:center}
 .hero-image.compact.hero-logo img{margin:auto;object-fit:contain}
 .hero-image.compact.machino-hero-logo img{width:44%;height:44%}
 .hero-image.compact.adjas-hero-logo img{width:58%;height:58%}
@@ -124,6 +124,22 @@ body.lightbox-open{overflow:hidden}
 @media(max-width:760px){.chapter[id]{scroll-margin-top:64px}}
 
 .concept-chapter .chapter-head{margin-bottom:0}
+
+
+/* Detail-page refinements -------------------------------------------------- */
+/* OTHER WORKS: keep the heading visually attached to its summary content. */
+.work-overview{margin-top:clamp(70px,7vw,96px)}
+.work-summary-title{
+  margin:0 0 18px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+  font-size:clamp(20px,2vw,26px);
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.06em;
+  text-align:left;
+}
+.work-overview .project-deck{margin-top:0;padding-top:0;border-top:0}
 
 /* ==========================================================================
    MOBILE — AUTHORITATIVE DETAIL PAGE RULES
@@ -183,18 +199,30 @@ body.lightbox-open{overflow:hidden}
 
   .menu-button:before,
   .menu-button:after{
-    width:18px;
+    position:absolute;
+    left:12px;
+    right:12px;
+    width:auto;
     height:1px;
-    margin:5px auto;
+    margin:0;
+    background:var(--ink);
+    transform:none;
   }
 
-  .menu-button.open:before{
-    transform:translateY(3px) rotate(45deg);
+  .menu-button:before{top:16px}
+  .menu-button:after{top:26px}
+
+  .menu-button.open{
+    position:fixed;
+    top:11px;
+    right:14px;
+    z-index:220;
   }
 
-  .menu-button.open:after{
-    transform:translateY(-3px) rotate(-45deg);
-  }
+  .menu-button.open:before,
+  .menu-button.open:after{top:20px}
+  .menu-button.open:before{transform:rotate(45deg)}
+  .menu-button.open:after{transform:rotate(-45deg)}
 
   .detail-nav{
     position:fixed;
@@ -439,6 +467,30 @@ body.lightbox-open{overflow:hidden}
     font-size:10px;
   }
 
+  /* Mobile heading rhythm ------------------------------------------------ */
+  .overview h2,
+  .work-summary-title,
+  .logo-variation>figcaption,
+  .logo-variation>p{
+    text-align:center;
+  }
+
+  .work-overview{
+    margin-top:64px;
+  }
+
+  .work-summary-title{
+    margin-bottom:18px;
+    padding-bottom:16px;
+  }
+
+  .work-overview .project-deck>p,
+  .logo-variation.colors dl,
+  .logo-variation.colors dt,
+  .logo-variation.colors dd{
+    text-align:left;
+  }
+
   /* Logo specification: artwork wide, mono pair stays inset ------------- */
   .logo-variations{
     width:auto;
@@ -602,91 +654,5 @@ body.lightbox-open{overflow:hidden}
     stroke:currentColor;
     stroke-width:1.9;
     animation:none;
-  }
-}
-
-/* ========================================================================
-   2026-08-30 layout refinement
-   Keep the approved mobile switcher behavior unchanged.
-   ======================================================================== */
-
-/* OTHER WORKS: keep the summary heading with its summary content. */
-.work-overview{
-  /* Keep the summary visually attached to its text rather than to the artwork above. */
-  margin-top:clamp(88px,8vw,118px);
-}
-.work-summary-title{
-  margin:0 0 18px;
-  padding-bottom:16px;
-  border-bottom:1px solid var(--line);
-  font-size:clamp(20px,2vw,26px);
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:.06em;
-  text-align:left;
-}
-.work-overview .project-deck{
-  margin-top:0;
-  padding-top:0;
-  border-top:0;
-}
-
-/* WORKS: give the opening logo panel more breathing room below the title. */
-.work-project + .hero-image.compact{
-  /* Desktop: separate the project title area clearly from the opening logo panel. */
-  margin-top:clamp(108px,9vw,138px);
-}
-
-@media(max-width:760px){
-  /* Stable two-line hamburger / close icon, centered exactly in the button. */
-  .menu-button:before,
-  .menu-button:after{
-    position:absolute;
-    left:12px;
-    right:12px;
-    width:auto;
-    height:1px;
-    margin:0;
-    background:var(--ink);
-    transform:none;
-  }
-  .menu-button:before{top:16px;}
-  .menu-button:after{top:26px;}
-  .menu-button.open{
-    position:fixed;
-    top:11px;
-    right:14px;
-    z-index:220;
-  }
-  .menu-button.open:before,
-  .menu-button.open:after{top:20px;}
-  .menu-button.open:before{transform:rotate(45deg);}
-  .menu-button.open:after{transform:rotate(-45deg);}
-
-  /* Mobile headings/captions use a centered visual rhythm. */
-  .overview h2,
-  .work-summary-title,
-  .logo-variation>figcaption,
-  .logo-variation>p{
-    text-align:center;
-  }
-  .work-overview{
-    margin-top:52px;
-  }
-  .work-summary-title{
-    margin-bottom:18px;
-    padding-bottom:16px;
-  }
-
-  /* Keep reading text and data left-aligned. */
-  .work-overview .project-deck>p,
-  .logo-variation.colors dl,
-  .logo-variation.colors dt,
-  .logo-variation.colors dd{
-    text-align:left;
-  }
-
-  .work-project + .hero-image.compact{
-    margin-top:30px;
   }
 }
