@@ -1957,9 +1957,9 @@
 
   /* MACHINO mark: give it visual breathing room like ADJAS */
   #works .machino-work-card .home-card-image img{
-    width:78%!important;
-    height:78%!important;
-    max-width:78%!important;
+    width:62%!important;
+    height:62%!important;
+    max-width:62%!important;
   }
 
   /* project names only — relaxed tracking */
