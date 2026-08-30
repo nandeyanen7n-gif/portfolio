@@ -1,7 +1,7 @@
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- hero logo: 黒い線を描く → 黄色が追いかける → 黄色だけ消えて黒いロゴが完成 ---------- */
+  /* ---------- hero logo: desktop existing / mobile yellow only ---------- */
   (function(){
     var hero = document.getElementById('hero');
     var blackPath = document.querySelector('#heroLogo .logo-line');
@@ -16,11 +16,41 @@
 
     var blackLen = blackPath.getTotalLength();
     var yellowLen = yellowPath.getTotalLength();
+    var isMobile = window.matchMedia('(max-width:760px)').matches;
+
+    if(isMobile){
+      blackPath.style.transition = 'none';
+      blackPath.style.strokeDasharray = 'none';
+      blackPath.style.strokeDashoffset = '0';
+      blackPath.style.opacity = '1';
+
+      yellowPath.style.strokeDasharray = yellowLen;
+      yellowPath.style.strokeDashoffset = -yellowLen;
+      yellowPath.style.opacity = '0';
+
+      hero.classList.add('is-ready');
+      document.body.classList.add('intro-complete');
+
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          yellowPath.style.transition = 'stroke-dashoffset 1750ms cubic-bezier(.22,1,.36,1), opacity 280ms ease';
+          yellowPath.style.opacity = '0.95';
+          yellowPath.style.strokeDashoffset = '0';
+        });
+      });
+
+      window.setTimeout(function(){
+        yellowPath.style.transition = 'opacity 520ms ease';
+        yellowPath.style.opacity = '0';
+      }, 1800);
+
+      onScrollHeader();
+      return;
+    }
+
     var drawDuration = 2850;
     var chaseDelay = 550;
-
     blackPath.style.strokeDasharray = blackLen;
-    /* Negative offset reverses the reveal so the line travels left to right. */
     blackPath.style.strokeDashoffset = -blackLen;
     yellowPath.style.strokeDasharray = yellowLen;
     yellowPath.style.strokeDashoffset = -yellowLen;
