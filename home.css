@@ -1890,3 +1890,36 @@
     white-space:nowrap!important;
   }
 }
+
+
+/* v6.3 mobile: full-bleed images + reliable return-to-top arrow */
+@media (max-width:760px){
+
+  /* Keep text/content padding, but let artwork itself reach both screen edges. */
+  .works-grid .home-card-image,
+  .other-grid .home-card-image,
+  .about-home-art{
+    width:100vw!important;
+    max-width:none!important;
+    margin-left:calc(50% - 50vw)!important;
+    margin-right:calc(50% - 50vw)!important;
+  }
+
+  /* Return-to-top control: show reliably after the page starts scrolling. */
+  .page-top{
+    position:fixed!important;
+    right:18px!important;
+    bottom:20px!important;
+    left:auto!important;
+    z-index:9999!important;
+    display:flex!important;
+  }
+
+  body.has-scrolled .page-top,
+  .page-top.is-visible{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+}
