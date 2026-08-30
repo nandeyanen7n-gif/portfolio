@@ -571,3 +571,93 @@ body.lightbox-open{overflow:hidden}
     z-index:95!important;
   }
 }
+
+
+/* ==========================================================================
+   FINAL SMARTPHONE REQUESTS — 2026-08-30
+   ========================================================================== */
+@media (max-width:760px){
+
+  /* The WORKS / OTHER WORKS project switcher stays fixed at the top while scrolling. */
+  .works-page-jump{
+    position:sticky!important;
+    top:0!important;
+    z-index:180!important;
+  }
+
+  /* Logo specification artwork goes edge-to-edge; headings keep their normal inset. */
+  .logo-variations{
+    width:auto!important;
+    max-width:none!important;
+    margin-left:-24px!important;
+    margin-right:-24px!important;
+  }
+
+  .logo-variation>figcaption,
+  .logo-variation>p,
+  .logo-variation.colors{
+    padding-left:24px!important;
+    padding-right:24px!important;
+  }
+
+  .logo-variation .variation-board,
+  .logo-variation .mono-boards{
+    width:100%!important;
+    max-width:none!important;
+  }
+
+  /* Match the return-to-top button to the top page. */
+  .page-top{
+    right:18px!important;
+    bottom:22px!important;
+    width:56px!important;
+    height:56px!important;
+    min-width:0!important;
+    z-index:260!important;
+  }
+
+  .page-top svg{
+    width:22px!important;
+    height:27px!important;
+    stroke-width:1.9!important;
+  }
+
+  /* Business-card lightbox: almost full screen width. */
+  .image-lightbox[data-kind="card"]{
+    padding:58px 6px 12px!important;
+  }
+
+  .image-lightbox[data-kind="card"] .image-lightbox-media>img{
+    width:calc(100vw - 12px)!important;
+    max-width:calc(100vw - 12px)!important;
+    height:auto!important;
+    max-height:calc(100dvh - 76px)!important;
+    object-fit:contain!important;
+  }
+
+  /* Website lightbox: show the real landing page large and allow vertical scrolling. */
+  .image-lightbox[data-kind="website"]{
+    align-items:flex-start!important;
+    padding:54px 6px 6px!important;
+    overflow:hidden!important;
+  }
+
+  .image-lightbox[data-kind="website"] .image-lightbox-media{
+    display:block!important;
+    width:100%!important;
+    height:calc(100dvh - 60px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  .image-lightbox[data-kind="website"] .image-lightbox-media>img{
+    display:block!important;
+    width:calc(100vw - 12px)!important;
+    max-width:calc(100vw - 12px)!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+    object-fit:contain!important;
+  }
+}

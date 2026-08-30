@@ -2,6 +2,9 @@
   const main = document.querySelector('main');
   if (!main) return;
 
+  const isWorksPage = document.body.classList.contains('works-detail-page') ||
+    !!document.querySelector('.works-page-jump:not(.other-page-jump)');
+
   const dialog = document.createElement('div');
   dialog.className = 'image-lightbox';
   dialog.setAttribute('role', 'dialog');
@@ -16,30 +19,56 @@
   let previousFocus = null;
 
   const zoomTargets = [];
-  main.querySelectorAll('img, .variation-board, .mono-board, .logo-board').forEach((element) => {
-    if (element.matches('img') && element.closest('.variation-board, .mono-board, .logo-board')) return;
+
+  const addTarget = (element) => {
     element.classList.add('is-zoomable');
     element.setAttribute('tabindex', '0');
     element.setAttribute('role', 'button');
     const alt = element.matches('img') ? element.alt : element.querySelector('img')?.alt;
     element.setAttribute('aria-label', alt ? `${alt}を拡大表示` : '画像を拡大表示');
     zoomTargets.push(element);
-  });
+  };
+
+  if (isWorksPage) {
+    main.querySelectorAll('[data-lightbox]').forEach(addTarget);
+  } else {
+    main.querySelectorAll('img, .variation-board, .mono-board, .logo-board').forEach((element) => {
+      if (element.matches('img') && element.closest('.variation-board, .mono-board, .logo-board')) return;
+      if (element.closest('.hero-logo, .process-chapter, .logo-variations')) return;
+      if (element.closest('#atsureki') && element.closest('figure')?.querySelector('img[src*="atsureki-process"]')) return;
+      addTarget(element);
+    });
+  }
 
   const open = (target) => {
     previousFocus = target;
-    const clone = target.cloneNode(true);
+    const kind = target.dataset.lightbox || '';
+    dialog.dataset.kind = kind;
+
+    let clone;
+    const replacementSrc = target.dataset.lightboxSrc;
+    if (replacementSrc && target.matches('img')) {
+      clone = target.cloneNode(false);
+      clone.src = replacementSrc;
+    } else {
+      clone = target.cloneNode(true);
+    }
+
     clone.classList.remove('is-zoomable');
     clone.removeAttribute('tabindex');
     clone.removeAttribute('role');
     clone.removeAttribute('aria-label');
-    clone.querySelectorAll('.is-zoomable, [tabindex], [role="button"]').forEach((child) => {
+    clone.removeAttribute('data-lightbox');
+    clone.removeAttribute('data-lightbox-src');
+    clone.querySelectorAll?.('.is-zoomable, [tabindex], [role="button"]').forEach((child) => {
       child.classList.remove('is-zoomable');
       child.removeAttribute('tabindex');
       child.removeAttribute('role');
       child.removeAttribute('aria-label');
     });
+
     media.replaceChildren(clone);
+    media.scrollTop = 0;
     document.body.classList.add('lightbox-open');
     dialog.classList.add('is-open');
     dialog.setAttribute('aria-hidden', 'false');
@@ -51,6 +80,7 @@
     dialog.classList.remove('is-open');
     dialog.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
+    delete dialog.dataset.kind;
     media.replaceChildren();
     previousFocus?.focus();
   };
