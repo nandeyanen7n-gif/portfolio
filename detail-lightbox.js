@@ -2,6 +2,27 @@
   const main = document.querySelector('main');
   if (!main) return;
 
+
+  /* Mobile detail header: hide while scrolling down, return while scrolling up. */
+  const siteHeader = document.querySelector('.site-header');
+  let lastHeaderY = window.scrollY;
+  const updateMobileHeader = () => {
+    if (!siteHeader) return;
+    if (window.innerWidth > 760 || document.body.classList.contains('lightbox-open')) {
+      siteHeader.classList.remove('mobile-hidden');
+      lastHeaderY = window.scrollY;
+      return;
+    }
+    const y = window.scrollY;
+    if (y < 24 || y < lastHeaderY - 6) siteHeader.classList.remove('mobile-hidden');
+    else if (y > lastHeaderY + 6 && y > 90) siteHeader.classList.add('mobile-hidden');
+    lastHeaderY = y;
+  };
+  window.addEventListener('scroll', updateMobileHeader, { passive: true });
+  window.addEventListener('resize', updateMobileHeader);
+  updateMobileHeader();
+
+
   const dialog = document.createElement('div');
   dialog.className = 'image-lightbox';
   dialog.setAttribute('role', 'dialog');
@@ -17,8 +38,6 @@
 
   const zoomTargets = [];
   main.querySelectorAll('img, .variation-board, .mono-board, .logo-board').forEach((element) => {
-    if (element.closest('.hero-logo, .process-chapter, .logo-variations')) return;
-    if (element.closest('#atsureki') && element.closest('figure')?.querySelector('img[src*="atsureki-process"]')) return;
     if (element.matches('img') && element.closest('.variation-board, .mono-board, .logo-board')) return;
     element.classList.add('is-zoomable');
     element.setAttribute('tabindex', '0');
