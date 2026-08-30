@@ -39,7 +39,9 @@
         yellowPath.style.opacity = '0';
       }, 1200);
 
-      onScrollHeader();
+      /* Header state is initialized after #gnav is assigned below.
+         Calling onScrollHeader() here on mobile used to run too early and
+         abort the rest of this script, which disabled the hamburger and page-top button. */
       return;
     }
 
