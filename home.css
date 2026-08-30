@@ -2137,3 +2137,134 @@
   .page-top{z-index:320!important;}
   html,body,#contents{overflow-x:hidden!important;}
 }
+
+
+/* ==========================================================================
+   MOBILE FINAL FROM LATEST — smartphone only
+   ========================================================================== */
+@media (max-width:760px){
+
+  /* Keep the approved relaxed spacing under the hero logo. */
+  #hero .hero-word,
+  #hero.is-ready .hero-word,
+  #hero .hero-title-line{
+    letter-spacing:.08em!important;
+  }
+
+  /* Keep the approved MACHINO mark scale. */
+  #works .machino-work-card .home-card-image img{
+    width:62%!important;
+    height:62%!important;
+    max-width:62%!important;
+  }
+
+  /* Home artwork: edge-to-edge safely, without 100vw horizontal drift. */
+  #works .inner,
+  #other-works .inner{
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+
+  #works .works-grid,
+  #other-works .other-grid,
+  #works .home-card,
+  #other-works .other-card,
+  #works .home-card-image,
+  #other-works .home-card-image{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  #works .home-heading,
+  #other-works .home-heading,
+  #works .home-card h3,
+  #works .home-card p,
+  #other-works .other-card h3{
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+
+  /* Use the earlier, approved centered full-screen menu. */
+  body.nav-open{
+    overflow:hidden!important;
+  }
+
+  body.nav-open #gnav{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  #gnav .nav-links{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    margin:0!important;
+    padding:72px 24px 92px!important;
+    background:#fff!important;
+    z-index:220!important;
+
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:20px!important;
+
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:none!important;
+  }
+
+  #gnav .nav-links.open{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  #gnav .nav-links.open li{
+    width:auto!important;
+    min-width:240px!important;
+    margin:0!important;
+    border:0!important;
+    text-align:center!important;
+  }
+
+  #gnav .nav-links.open a{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:44px!important;
+    padding:6px 16px!important;
+    font-size:20px!important;
+    line-height:1.3!important;
+    letter-spacing:.11em!important;
+    color:#111!important;
+    text-align:center!important;
+    border:0!important;
+  }
+
+  #gnav .nav-burger{
+    position:relative!important;
+    z-index:230!important;
+  }
+
+  /* Header disappears while scrolling down, returns on upward scroll. */
+  #gnav.mobile-hidden{
+    transform:translateY(-105%)!important;
+  }
+
+  /* Keep page-top available. */
+  .page-top{
+    z-index:260!important;
+  }
+
+  html,body,#contents{
+    overflow-x:hidden!important;
+  }
+}

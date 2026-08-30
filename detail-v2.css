@@ -52,17 +52,17 @@
 .logo-variation figcaption,.logo-variation>p{margin:0 0 12px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--ink)}
 .variation-board{aspect-ratio:4/3;display:grid;place-items:center;background:#fff;overflow:hidden}
 .variation-board:has(svg) svg{display:none}
-.variation-board:has(svg)::before{content:"";width:62%;aspect-ratio:575.04/332.64;background:url("portfolio-assets/machino-mark.svg") center/contain no-repeat}
+.variation-board:has(svg)::before{content:"";width:62%;aspect-ratio:575.04/332.64;background:url("machino-mark.svg") center/contain no-repeat}
 .logo-variation.signature .variation-board img{width:76%;height:76%;object-fit:contain}
 .variation-board>img{width:100%;height:100%;object-fit:contain}
 .mono-boards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .mono-board{aspect-ratio:4/3;display:grid;place-items:center;border:1px solid var(--line);background:#fff}
 .mono-board.dark{background:#111112;border-color:#111112}
 .mono-board svg{display:none}
-.mono-board::before{content:"";width:68%;aspect-ratio:575.04/332.64;background:url("portfolio-assets/machino-mark.svg") center/contain no-repeat}
+.mono-board::before{content:"";width:68%;aspect-ratio:575.04/332.64;background:url("machino-mark.svg") center/contain no-repeat}
 .mono-board.dark::before{filter:brightness(0) invert(1)}
-.mono-board.asset-logo::before{background-image:url("portfolio-assets/machino-logo.svg")}
-.mono-board.adjas-mono::before{aspect-ratio:8/5;background-image:url("portfolio-assets/adjas-logo.svg")}
+.mono-board.asset-logo::before{background-image:url("machino-logo.svg")}
+.mono-board.adjas-mono::before{aspect-ratio:8/5;background-image:url("adjas-logo.svg")}
 .logo-variation.colors dl{margin:0;background:#fff;padding:clamp(28px,4vw,48px)}
 .logo-variation.colors dl div{display:grid;grid-template-columns:88px 1fr 28px;gap:18px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
 .logo-variation.colors dl div:last-child{border-bottom:0}
@@ -268,4 +268,306 @@ body.lightbox-open{overflow:hidden}
   /* Mobile navigation is already available above. */
   .detail-end-nav{display:none!important;}
   .page-top{z-index:95!important;right:14px!important;bottom:18px!important;}
+}
+
+
+/* ==========================================================================
+   MOBILE FINAL FROM LATEST — WORKS / OTHER WORKS, smartphone only
+   ========================================================================== */
+@media (max-width:760px){
+
+  html,body,main{
+    overflow-x:hidden!important;
+  }
+
+  /* Main header: keep the original compact mobile header.
+     JS hides it on downward scroll and restores it on upward scroll. */
+  .site-header{
+    height:64px!important;
+    z-index:90!important;
+    transition:transform .3s ease, opacity .3s ease!important;
+  }
+
+  .site-header.mobile-hidden{
+    transform:translateY(-105%)!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  .site-header .inner{
+    padding-left:18px!important;
+    padding-right:14px!important;
+  }
+
+  /* Restore the earlier clean hamburger menu:
+     white screen, centered 3 items, no stray switcher text. */
+  body.menu-open{
+    overflow:hidden!important;
+  }
+
+  body.menu-open .works-page-jump{
+    visibility:hidden!important;
+  }
+
+  .detail-nav{
+    position:fixed!important;
+    inset:64px 0 0!important;
+    z-index:85!important;
+    margin:0!important;
+    padding:40px 24px 76px!important;
+    background:#fff!important;
+
+    display:none!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:20px!important;
+  }
+
+  .detail-nav.open{
+    display:flex!important;
+  }
+
+  .detail-nav a{
+    width:auto!important;
+    min-width:240px!important;
+    padding:10px 16px!important;
+    border:0!important;
+    font-size:20px!important;
+    line-height:1.3!important;
+    letter-spacing:.11em!important;
+    color:#111!important;
+    text-align:center!important;
+  }
+
+  .menu-button{
+    position:relative!important;
+    z-index:95!important;
+  }
+
+  .menu-button.open:before{
+    transform:translateY(3px) rotate(45deg)!important;
+  }
+
+  .menu-button.open:after{
+    transform:translateY(-3px) rotate(-45deg)!important;
+  }
+
+  /* Restore project switchers.
+     At the top they sit directly below the 64px header.
+     Once the header hides, the switcher moves to the top. */
+  .works-page-jump{
+    display:block!important;
+    position:sticky!important;
+    top:64px!important;
+    z-index:70!important;
+    width:100%!important;
+    margin-top:64px!important;
+    background:rgba(255,255,255,.98)!important;
+    border-top:1px solid rgba(17,17,17,.06)!important;
+    border-bottom:1px solid var(--line)!important;
+    transition:top .3s ease!important;
+  }
+
+  .site-header.mobile-hidden + .works-page-jump{
+    top:0!important;
+  }
+
+  .section-jump{
+    min-height:58px!important;
+    padding:0 16px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:18px!important;
+    white-space:nowrap!important;
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    scrollbar-width:none!important;
+  }
+
+  .section-jump::-webkit-scrollbar{
+    display:none!important;
+  }
+
+  .section-jump a{
+    position:relative!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    min-height:58px!important;
+    padding:0!important;
+    border:0!important;
+    font:500 12px/1 var(--mono)!important;
+    letter-spacing:.10em!important;
+    color:#77766f!important;
+  }
+
+  .section-jump a[aria-current="location"]{
+    color:var(--ink)!important;
+  }
+
+  .section-jump a[aria-current="location"]::after{
+    content:""!important;
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    height:2px!important;
+    background:var(--accent)!important;
+  }
+
+  .section-jump span{
+    color:#aaa9a4!important;
+  }
+
+  /* With the switcher now occupying its own row, avoid a giant empty header gap. */
+  .project-hero{
+    padding-top:48px!important;
+    padding-bottom:52px!important;
+  }
+
+  .work-project{
+    scroll-margin-top:58px!important;
+  }
+
+  .chapter[id]{
+    scroll-margin-top:58px!important;
+  }
+
+  /* Smartphone overview: one item per row, as previously approved. */
+  .project-deck{
+    grid-template-columns:1fr!important;
+    gap:30px!important;
+  }
+
+  .project-facts{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    margin-top:8px!important;
+  }
+
+  .project-facts span{
+    display:block!important;
+    width:100%!important;
+    padding:18px 0!important;
+    border-top:1px solid var(--line)!important;
+    text-align:center!important;
+  }
+
+  .project-facts span:last-child{
+    border-bottom:1px solid var(--line)!important;
+  }
+
+  .project-facts b{
+    display:block!important;
+    margin-bottom:8px!important;
+  }
+
+  /* Top MACHINO / ADJAS logo panels: full page width and centered. */
+  .hero-image.compact{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    aspect-ratio:4/3!important;
+    display:grid!important;
+    place-items:center!important;
+  }
+
+  .hero-image.compact.machino-hero-logo img{
+    width:62%!important;
+    height:62%!important;
+    max-width:62%!important;
+    margin:auto!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+
+  .hero-image.compact.adjas-hero-logo img{
+    width:62%!important;
+    height:62%!important;
+    max-width:62%!important;
+    margin:auto!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+
+  /* Detail artwork: cancel only the 24px inner gutter.
+     No 100vw and no explicit enlarged width, so no left-side drift. */
+  .chapter .gallery{
+    width:auto!important;
+    max-width:none!important;
+    margin-left:-24px!important;
+    margin-right:-24px!important;
+    grid-template-columns:1fr!important;
+    gap:54px!important;
+  }
+
+  .chapter .gallery figure{
+    width:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    overflow:visible!important;
+  }
+
+  .chapter .gallery .square,
+  .chapter .gallery .landscape{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    background:transparent!important;
+  }
+
+  .chapter .gallery img{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    margin:0 auto!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  .chapter .gallery figcaption{
+    padding:12px 24px 0!important;
+    text-align:center!important;
+  }
+
+  /* Keep headings and overview text inset even while artwork touches the edges. */
+  .other-work-chapter .chapter-head,
+  .other-work-chapter .work-overview{
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+
+  /* Lightbox: make card / website images actually readable on phones. */
+  .image-lightbox{
+    padding:58px 6px 12px!important;
+  }
+
+  .image-lightbox-media>img{
+    width:auto!important;
+    height:auto!important;
+    max-width:calc(100vw - 12px)!important;
+    max-height:84vh!important;
+  }
+
+  .image-lightbox-media>.variation-board,
+  .image-lightbox-media>.mono-board,
+  .image-lightbox-media>.logo-board{
+    width:calc(100vw - 12px)!important;
+    max-width:calc(100vw - 12px)!important;
+  }
+
+  /* Mobile already has switcher + hamburger + return-to-top. */
+  .detail-end-nav{
+    display:none!important;
+  }
+
+  .page-top{
+    right:14px!important;
+    bottom:18px!important;
+    z-index:95!important;
+  }
 }
