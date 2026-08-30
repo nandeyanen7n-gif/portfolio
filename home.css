@@ -1770,87 +1770,21 @@
 }
 
 
-/* v5.8 mobile hero alignment + spacing + horizontal lock */
+/* ==========================================================================
+   MOBILE FINAL — consolidated smartphone rules
+   Applies only to the home page stylesheet at 760px and below.
+   ========================================================================== */
 @media (max-width:760px){
-  html,
-  body{
-    width:100%!important;
-    max-width:100vw!important;
-    overflow-x:clip!important;
-    overscroll-behavior-x:none;
-  }
 
-  #gnav,
-  #hero,
-  #contents{
-    max-width:100vw!important;
-    overflow-x:clip!important;
-  }
-
-  #hero .logo-stage,
-  #hero.is-ready .logo-stage{
-    margin-bottom:58px!important;
-  }
-
-  /* Keep each line left-aligned, but center the whole text block. */
-  #hero .hero-word,
-  #hero.is-ready .hero-word{
-    display:inline-block!important;
-    width:max-content!important;
-    max-width:100%!important;
-    align-self:center!important;
-    text-align:left!important;
-    line-height:1.12!important;
-  }
-
-  #hero .hero-title-line{
-    display:block!important;
-    width:max-content!important;
-  }
-
-  #hero .hero-title-line + .hero-title-line{
-    margin-top:11px!important;
-  }
-
-  /* Yellow guide is available for the mobile-only JS animation. */
-  #heroLogo .logo-line-under{
-    display:inline!important;
-  }
-}
-
-
-/* v5.9 mobile hero: quiet static down arrow */
-@media (max-width:760px){
-  .hero-down{
-    display:flex!important;
-    opacity:1!important;
-    visibility:visible!important;
-    pointer-events:auto!important;
-    transform:translate(-50%,0)!important;
-    bottom:16px!important;
-  }
-  .hero-down svg{
-    animation:none!important;
-  }
-}
-
-
-/* v6.0 mobile hero: bring the name block slightly closer to the logo */
-@media (max-width:760px){
-  #hero .logo-stage,
-  #hero.is-ready .logo-stage{
-    margin-bottom:46px!important;
-  }
-}
-
-
-/* v6.1 mobile: restore down arrow + hard horizontal overflow lock */
-@media (max-width:760px){
+  /* ----- viewport / horizontal stability ----- */
   html,
   body{
     width:100%!important;
     max-width:100%!important;
     overflow-x:hidden!important;
+  }
+
+  body{
     position:relative;
   }
 
@@ -1861,9 +1795,125 @@
   .home-section{
     width:100%!important;
     max-width:100%!important;
+  }
+
+  /* ----- mobile header ----- */
+  #gnav{
+    overflow:visible!important;
+  }
+
+  #gnav.mobile-hidden:not(:has(.nav-links.open)){
+    /* keep existing hide-on-scroll behavior */
+  }
+
+  #gnav .nav-mark{
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+
+  #gnav .nav-burger{
+    display:block!important;
+    position:relative!important;
+    z-index:310!important;
+    width:48px!important;
+    height:48px!important;
+  }
+
+  /* ----- hamburger menu ----- */
+  body.nav-open{
+    overflow:hidden!important;
+  }
+
+  body.nav-open #gnav{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+
+  #gnav .nav-links{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    max-width:none!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    padding:80px 24px!important;
+    margin:0!important;
+    background:#fff!important;
+    z-index:300!important;
+
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:22px!important;
+
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:none!important;
+  }
+
+  #gnav .nav-links.open{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  #gnav .nav-links.open li{
+    width:auto!important;
+    min-width:220px!important;
+    margin:0!important;
+    border:0!important;
+    text-align:center!important;
+  }
+
+  #gnav .nav-links.open a{
+    display:block!important;
+    padding:10px 16px!important;
+    font-size:20px!important;
+    line-height:1.4!important;
+  }
+
+  /* ----- hero ----- */
+  #hero{
     overflow-x:hidden!important;
   }
 
+  #hero .logo-stage,
+  #hero.is-ready .logo-stage{
+    margin-bottom:46px!important;
+  }
+
+  /* keep the requested natural three-line title */
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    display:block!important;
+    width:max-content!important;
+    max-width:calc(100vw - 48px)!important;
+    align-self:center!important;
+    text-align:left!important;
+    letter-spacing:normal!important;
+    line-height:1.12!important;
+  }
+
+  #hero .hero-title-line{
+    display:block!important;
+    width:max-content!important;
+    max-width:100%!important;
+    white-space:nowrap!important;
+    letter-spacing:normal!important;
+  }
+
+  #hero .hero-title-line + .hero-title-line{
+    margin-top:11px!important;
+  }
+
+  #heroLogo .logo-line-under{
+    display:inline!important;
+  }
+
+  /* static down arrow */
   #hero .hero-down{
     display:flex!important;
     opacity:1!important;
@@ -1876,24 +1926,8 @@
   #hero .hero-down svg{
     animation:none!important;
   }
-}
 
-
-/* v6.2 mobile hero: equal left/right edges for the three name lines */
-@media (max-width:760px){
-  #hero .hero-word,
-  #hero.is-ready .hero-word{
-    max-width:calc(100vw - 48px)!important;
-  }
-
-  #hero .hero-title-line{
-    white-space:nowrap!important;
-  }
-}
-
-
-/* v6.3 mobile: center WORKS / OTHER WORKS cards exactly in the viewport */
-@media (max-width:760px){
+  /* ----- common section centering ----- */
   #contents .inner,
   .home-section .inner,
   .works-grid,
@@ -1901,113 +1935,12 @@
   .home-card,
   .other-card{
     box-sizing:border-box!important;
-    width:100%!important;
     max-width:100%!important;
     margin-left:auto!important;
     margin-right:auto!important;
   }
 
-  .home-card-image,
-  .other-card-image,
-  .home-card a,
-  .other-card a{
-    box-sizing:border-box!important;
-    max-width:100%!important;
-  }
-
-  .home-card-image,
-  .other-card-image{
-    display:block!important;
-    width:100%!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-
-  .home-card-image img,
-  .other-card-image img,
-  .home-card img,
-  .other-card img{
-    display:block!important;
-    width:100%!important;
-    max-width:100%!important;
-    height:auto;
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-}
-
-
-/* v6.5 mobile hero title: restore reference layout */
-@media (max-width:760px){
-  #hero .hero-word,
-  #hero.is-ready .hero-word{
-    display:block!important;
-    width:max-content!important;
-    max-width:calc(100vw - 48px)!important;
-    align-self:center!important;
-    text-align:left!important;
-    letter-spacing:normal!important;
-    line-height:1.12!important;
-  }
-
-  #hero .hero-title-line{
-    display:block!important;
-    width:max-content!important;
-    max-width:100%!important;
-    white-space:nowrap!important;
-    letter-spacing:normal!important;
-  }
-
-  #hero .hero-title-line + .hero-title-line{
-    margin-top:11px!important;
-  }
-}
-
-
-/* v6.6 SMARTPHONE ONLY
-   1) mobile menu visibility
-   2) WORKS logo visual balance
-   3) remove gray gap below OTHER WORKS images
-   4) slightly wider project-title tracking
-*/
-@media (max-width:760px){
-
-  /* --- mobile hamburger menu --- */
-  body.nav-open #gnav{
-    overflow:visible!important;
-    transform:none!important;
-  }
-
-  #gnav .nav-links{
-    position:fixed!important;
-    inset:0!important;
-    width:100%!important;
-    max-width:none!important;
-    height:100dvh!important;
-    min-height:100dvh!important;
-    z-index:220!important;
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:center!important;
-    justify-content:center!important;
-    opacity:0!important;
-    visibility:hidden!important;
-    pointer-events:none!important;
-    background:#fff!important;
-  }
-
-  #gnav .nav-links.open{
-    opacity:1!important;
-    visibility:visible!important;
-    pointer-events:auto!important;
-  }
-
-  #gnav .nav-burger{
-    position:relative!important;
-    z-index:230!important;
-  }
-
-  /* --- WORKS: keep both logos comfortably inside equal boxes --- */
+  /* ----- WORKS cards ----- */
   #works .home-card-image{
     display:grid!important;
     place-items:center!important;
@@ -2016,33 +1949,38 @@
     overflow:hidden!important;
   }
 
-  /* MACHINO AZUSA has little built-in image margin, so add visual breathing room */
-  #works .machino-work-card .home-card-image img{
-    width:78%!important;
-    height:78%!important;
-    max-width:78%!important;
+  #works .home-card-image img{
+    display:block!important;
     object-fit:contain!important;
     margin:auto!important;
   }
 
-  /* Project names: a little more relaxed */
-  #works .home-card h3{
-    letter-spacing:.15em!important;
+  /* MACHINO mark: give it visual breathing room like ADJAS */
+  #works .machino-work-card .home-card-image img{
+    width:78%!important;
+    height:78%!important;
+    max-width:78%!important;
   }
 
-  /* --- OTHER WORKS: image height follows the actual image, no leftover gray box --- */
+  /* project names only — relaxed tracking */
+  #works .home-card h3{
+    letter-spacing:.16em!important;
+  }
+
+  /* ----- OTHER WORKS: no artificial square box / no gray remainder ----- */
   #other-works .other-card .home-card-image{
     display:block!important;
     width:100%!important;
     height:auto!important;
-    aspect-ratio:auto!important;
     min-height:0!important;
+    aspect-ratio:auto!important;
     background:transparent!important;
     overflow:hidden!important;
   }
 
   #other-works .other-card .home-card-image::before{
     display:none!important;
+    content:none!important;
   }
 
   #other-works .other-card .home-card-image img{
@@ -2053,5 +1991,37 @@
     aspect-ratio:auto!important;
     object-fit:contain!important;
     margin:0!important;
+  }
+
+  /* ----- page-top button ----- */
+  .page-top{
+    position:fixed!important;
+    right:18px!important;
+    bottom:22px!important;
+    z-index:260!important;
+
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+
+    width:56px!important;
+    height:56px!important;
+    min-width:0!important;
+
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:none!important;
+  }
+
+  .page-top.is-visible,
+  body.has-scrolled .page-top{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  .page-top svg{
+    animation:none!important;
   }
 }

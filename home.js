@@ -93,32 +93,43 @@
   /* ---------- mobile nav ---------- */
   var burger = document.getElementById('navBurger');
   var navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', function(){
-    var open = navLinks.classList.toggle('open');
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    burger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
-    document.body.classList.toggle('nav-open', open);
-  });
-  navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      navLinks.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded','false');
-      burger.setAttribute('aria-label','メニューを開く');
-      document.body.classList.remove('nav-open');
+
+  function closeMobileNav(){
+    if(!burger || !navLinks) return;
+    navLinks.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','メニューを開く');
+    document.body.classList.remove('nav-open');
+  }
+
+  if(burger && navLinks){
+    burger.addEventListener('click', function(){
+      var open = !navLinks.classList.contains('open');
+
+      if(open){
+        navLinks.classList.add('open');
+        burger.classList.add('open');
+        burger.setAttribute('aria-expanded','true');
+        burger.setAttribute('aria-label','メニューを閉じる');
+        document.body.classList.add('nav-open');
+        gnav.classList.remove('mobile-hidden');
+      }else{
+        closeMobileNav();
+      }
     });
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && navLinks.classList.contains('open')){
-      navLinks.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded','false');
-      burger.setAttribute('aria-label','メニューを開く');
-      document.body.classList.remove('nav-open');
-      burger.focus();
-    }
-  });
+
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMobileNav);
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && navLinks.classList.contains('open')){
+        closeMobileNav();
+        burger.focus();
+      }
+    });
+  }
 
   /* ---------- smooth scroll with header offset ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
@@ -184,14 +195,21 @@
 
   /* ---------- page top ---------- */
   var pageTop = document.getElementById('pageTop');
-  function updatePageTop(){
-    pageTop.classList.toggle('is-visible', window.scrollY > Math.max(420, window.innerHeight * .65));
-  }
-  updatePageTop();
-  window.addEventListener('scroll', updatePageTop, {passive:true});
-  pageTop.addEventListener('click', function(){
-    window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'});
-  });
 
+  function updatePageTop(){
+    if(!pageTop) return;
+    pageTop.classList.toggle(
+      'is-visible',
+      window.scrollY > Math.max(320, window.innerHeight * .45)
+    );
+  }
+
+  if(pageTop){
+    updatePageTop();
+    window.addEventListener('scroll', updatePageTop, {passive:true});
+    pageTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'});
+    });
+  }
 
 })();
