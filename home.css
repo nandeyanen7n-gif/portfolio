@@ -1902,7 +1902,7 @@
     width:max-content!important;
     max-width:100%!important;
     white-space:nowrap!important;
-    letter-spacing:normal!important;
+    letter-spacing:.32em!important;
   }
 
   #hero .hero-title-line + .hero-title-line{
