@@ -1842,3 +1842,74 @@
     margin-bottom:46px!important;
   }
 }
+
+
+/* v6.1 mobile: restore down arrow + hard horizontal overflow lock */
+@media (max-width:760px){
+  html,
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    position:relative;
+  }
+
+  #gnav,
+  #hero,
+  #contents,
+  main,
+  .home-section{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  #hero .hero-down{
+    display:flex!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translate(-50%,0)!important;
+    bottom:16px!important;
+  }
+
+  #hero .hero-down svg{
+    animation:none!important;
+  }
+}
+
+
+/* v6.2 mobile: yellow transfers from logo guide to M/A/P */
+@media (max-width:760px){
+  #hero .hero-word .name-accent{
+    color:var(--ink)!important;
+    opacity:1!important;
+    transform:none!important;
+    transition:color 700ms ease!important;
+  }
+
+  #hero.map-accent-on .hero-word .name-accent{
+    color:var(--accent)!important;
+  }
+}
+
+
+/* v6.3 mobile: keep the first view clean; reveal navigation after scrolling */
+@media (max-width:760px){
+  body.intro-complete #gnav{
+    opacity:0!important;
+    transform:translateY(-100%)!important;
+    pointer-events:none!important;
+  }
+
+  body.intro-complete.has-scrolled #gnav{
+    opacity:1!important;
+    transform:none!important;
+    pointer-events:auto!important;
+  }
+
+  body.intro-complete.has-scrolled #gnav .nav-mark{
+    opacity:1!important;
+    transform:none!important;
+  }
+}

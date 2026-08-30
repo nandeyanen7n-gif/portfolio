@@ -39,6 +39,10 @@
         yellowPath.style.opacity = '0';
       }, 1200);
 
+      window.setTimeout(function(){
+        hero.classList.add('map-accent-on');
+      }, 1450);
+
       onScrollHeader();
       return;
     }
