@@ -1879,37 +1879,14 @@
 }
 
 
-/* v6.2 mobile: yellow transfers from logo guide to M/A/P */
+/* v6.2 mobile hero: equal left/right edges for the three name lines */
 @media (max-width:760px){
-  #hero .hero-word .name-accent{
-    color:var(--ink)!important;
-    opacity:1!important;
-    transform:none!important;
-    transition:color 700ms ease!important;
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    max-width:calc(100vw - 48px)!important;
   }
 
-  #hero.map-accent-on .hero-word .name-accent{
-    color:var(--accent)!important;
-  }
-}
-
-
-/* v6.3 mobile: keep the first view clean; reveal navigation after scrolling */
-@media (max-width:760px){
-  body.intro-complete #gnav{
-    opacity:0!important;
-    transform:translateY(-100%)!important;
-    pointer-events:none!important;
-  }
-
-  body.intro-complete.has-scrolled #gnav{
-    opacity:1!important;
-    transform:none!important;
-    pointer-events:auto!important;
-  }
-
-  body.intro-complete.has-scrolled #gnav .nav-mark{
-    opacity:1!important;
-    transform:none!important;
+  #hero .hero-title-line{
+    white-space:nowrap!important;
   }
 }
