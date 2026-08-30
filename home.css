@@ -1937,34 +1937,44 @@
 }
 
 
-/* v6.4 mobile hero: fixed tracking — no JS measurement */
+/* v6.5 mobile hero title: restore reference layout */
 @media (max-width:760px){
   #hero .hero-word,
   #hero.is-ready .hero-word{
-    width:82vw!important;
-    max-width:340px!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
+    display:block!important;
+    width:max-content!important;
+    max-width:calc(100vw - 48px)!important;
+    align-self:center!important;
     text-align:left!important;
+    letter-spacing:normal!important;
+    line-height:1.12!important;
   }
 
   #hero .hero-title-line{
     display:block!important;
     width:max-content!important;
+    max-width:100%!important;
     white-space:nowrap!important;
+    letter-spacing:normal!important;
   }
 
-  /* Fixed tracking for each word so the three rows visually share
-     the same left and right edges. */
-  #hero .hero-title-line:nth-child(1){
-    letter-spacing:1.02em!important; /* MACHINO */
+  #hero .hero-title-line + .hero-title-line{
+    margin-top:11px!important;
+  }
+}
+
+
+/* v6.6 mobile only: enlarge the visible ADJAS mark to match MACHINO AZUSA */
+@media (max-width:760px){
+  #works .works-grid .home-card:not(.machino-work-card) .home-card-image{
+    overflow:hidden!important;
   }
 
-  #hero .hero-title-line:nth-child(2){
-    letter-spacing:1.78em!important; /* AZUSA */
-  }
-
-  #hero .hero-title-line:nth-child(3){
-    letter-spacing:.64em!important; /* PORTFOLIO */
+  #works .works-grid .home-card:not(.machino-work-card) .home-card-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    transform:scale(1.55)!important;
+    transform-origin:center center!important;
   }
 }

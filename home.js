@@ -39,6 +39,7 @@
         yellowPath.style.opacity = '0';
       }, 1200);
 
+      onScrollHeader();
       return;
     }
 
@@ -191,60 +192,6 @@
   pageTop.addEventListener('click', function(){
     window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'});
   });
-
-
-
-  /* ---------- mobile hero title: align characters vertically by fixed columns ---------- */
-  (function(){
-    var lines = Array.prototype.slice.call(document.querySelectorAll('#hero .hero-title-line'));
-    if(!lines.length) return;
-
-    var originals = lines.map(function(line){
-      return line.innerHTML;
-    });
-
-    function buildMobileGrid(){
-      lines.forEach(function(line, lineIndex){
-        if(line.dataset.mobileGrid === '1') return;
-
-        var text = (line.textContent || '').replace(/\s+/g, '');
-        line.innerHTML = '';
-
-        Array.prototype.forEach.call(text, function(ch, charIndex){
-          var span = document.createElement('span');
-          span.className = 'hero-char';
-          if(charIndex === 0){
-            span.classList.add('name-accent');
-          }
-          span.textContent = ch;
-          line.appendChild(span);
-        });
-
-        line.dataset.mobileGrid = '1';
-      });
-    }
-
-    function restoreDesktop(){
-      lines.forEach(function(line, i){
-        if(line.dataset.mobileGrid === '1'){
-          line.innerHTML = originals[i];
-          delete line.dataset.mobileGrid;
-        }
-      });
-    }
-
-    function updateHeroTitleGrid(){
-      if(window.innerWidth <= 760){
-        buildMobileGrid();
-      }else{
-        restoreDesktop();
-      }
-    }
-
-    updateHeroTitleGrid();
-    window.addEventListener('resize', updateHeroTitleGrid);
-    window.addEventListener('orientationchange', updateHeroTitleGrid);
-  })();
 
 
 })();
