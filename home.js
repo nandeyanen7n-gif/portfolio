@@ -19,30 +19,25 @@
     var isMobile = window.matchMedia('(max-width:760px)').matches;
 
     if(isMobile){
+      /* Mobile: completed black logo + yellow overlay. No drawing motion.
+         Hold briefly, then let only the yellow line fade away. */
       blackPath.style.transition = 'none';
       blackPath.style.strokeDasharray = 'none';
       blackPath.style.strokeDashoffset = '0';
       blackPath.style.opacity = '1';
 
-      yellowPath.style.strokeDasharray = yellowLen;
-      yellowPath.style.strokeDashoffset = -yellowLen;
-      yellowPath.style.opacity = '0';
+      yellowPath.style.transition = 'none';
+      yellowPath.style.strokeDasharray = 'none';
+      yellowPath.style.strokeDashoffset = '0';
+      yellowPath.style.opacity = '0.95';
 
       hero.classList.add('is-ready');
       document.body.classList.add('intro-complete');
 
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          yellowPath.style.transition = 'stroke-dashoffset 1750ms cubic-bezier(.22,1,.36,1), opacity 280ms ease';
-          yellowPath.style.opacity = '0.95';
-          yellowPath.style.strokeDashoffset = '0';
-        });
-      });
-
       window.setTimeout(function(){
-        yellowPath.style.transition = 'opacity 520ms ease';
+        yellowPath.style.transition = 'opacity 900ms ease';
         yellowPath.style.opacity = '0';
-      }, 1800);
+      }, 1200);
 
       onScrollHeader();
       return;

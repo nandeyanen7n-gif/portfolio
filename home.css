@@ -1817,3 +1817,28 @@
     display:inline!important;
   }
 }
+
+
+/* v5.9 mobile hero: quiet static down arrow */
+@media (max-width:760px){
+  .hero-down{
+    display:flex!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translate(-50%,0)!important;
+    bottom:16px!important;
+  }
+  .hero-down svg{
+    animation:none!important;
+  }
+}
+
+
+/* v6.0 mobile hero: bring the name block slightly closer to the logo */
+@media (max-width:760px){
+  #hero .logo-stage,
+  #hero.is-ready .logo-stage{
+    margin-bottom:46px!important;
+  }
+}
