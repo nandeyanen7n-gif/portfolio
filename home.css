@@ -1892,34 +1892,79 @@
 }
 
 
-/* v6.3 mobile: full-bleed images + reliable return-to-top arrow */
+/* v6.3 mobile: center WORKS / OTHER WORKS cards exactly in the viewport */
 @media (max-width:760px){
-
-  /* Keep text/content padding, but let artwork itself reach both screen edges. */
-  .works-grid .home-card-image,
-  .other-grid .home-card-image,
-  .about-home-art{
-    width:100vw!important;
-    max-width:none!important;
-    margin-left:calc(50% - 50vw)!important;
-    margin-right:calc(50% - 50vw)!important;
+  #contents .inner,
+  .home-section .inner,
+  .works-grid,
+  .other-grid,
+  .home-card,
+  .other-card{
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
   }
 
-  /* Return-to-top control: show reliably after the page starts scrolling. */
-  .page-top{
-    position:fixed!important;
-    right:18px!important;
-    bottom:20px!important;
-    left:auto!important;
-    z-index:9999!important;
-    display:flex!important;
+  .home-card-image,
+  .other-card-image,
+  .home-card a,
+  .other-card a{
+    box-sizing:border-box!important;
+    max-width:100%!important;
   }
 
-  body.has-scrolled .page-top,
-  .page-top.is-visible{
-    opacity:1!important;
-    visibility:visible!important;
-    pointer-events:auto!important;
-    transform:none!important;
+  .home-card-image,
+  .other-card-image{
+    display:block!important;
+    width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  .home-card-image img,
+  .other-card-image img,
+  .home-card img,
+  .other-card img{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+
+
+/* v6.4 mobile hero: fixed tracking — no JS measurement */
+@media (max-width:760px){
+  #hero .hero-word,
+  #hero.is-ready .hero-word{
+    width:82vw!important;
+    max-width:340px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+
+  #hero .hero-title-line{
+    display:block!important;
+    width:max-content!important;
+    white-space:nowrap!important;
+  }
+
+  /* Fixed tracking for each word so the three rows visually share
+     the same left and right edges. */
+  #hero .hero-title-line:nth-child(1){
+    letter-spacing:1.02em!important; /* MACHINO */
+  }
+
+  #hero .hero-title-line:nth-child(2){
+    letter-spacing:1.78em!important; /* AZUSA */
+  }
+
+  #hero .hero-title-line:nth-child(3){
+    letter-spacing:.64em!important; /* PORTFOLIO */
   }
 }
