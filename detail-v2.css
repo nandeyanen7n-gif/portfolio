@@ -656,3 +656,55 @@ body.lightbox-open{overflow:hidden}
     animation:none;
   }
 }
+
+/* Desktop: keep the WORKS / OTHER WORKS section switcher visible below the fixed header.
+   Mobile behavior above is intentionally untouched. */
+@media (min-width:761px){
+  .works-page-jump,
+  .other-page-jump{
+    display:block;
+    position:fixed;
+    top:76px;
+    left:0;
+    right:0;
+    width:100%;
+    margin:0;
+    z-index:49;
+    background:rgba(255,255,255,.98);
+    border-bottom:1px solid var(--line);
+  }
+
+  .section-jump{
+    min-height:58px;
+    padding:0 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    white-space:nowrap;
+  }
+
+  .section-jump a{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    min-height:58px;
+    font:500 12px/1 var(--mono);
+    letter-spacing:.10em;
+    color:#77766f;
+  }
+
+  .section-jump a[aria-current="location"]{color:var(--ink)}
+  .section-jump a[aria-current="location"]::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:2px;
+    background:var(--accent);
+  }
+  .section-jump span{color:#aaa9a4}
+
+  main{padding-top:58px}
+}
